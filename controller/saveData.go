@@ -16,11 +16,15 @@ func (c *Controller) SaveDataIntoDatabase(ctx *gin.Context) {
 
 	err := json.NewDecoder(ctx.Request.Body).Decode(&requestBody)
 
+	log.Println(requestBody)
+
 	if err != nil {
 
 		log.Printf("Err with request body: %v", err)
 
 		ctx.JSON(400, gin.H{"error": err.Error()})
+
+		return
 
 	}
 
