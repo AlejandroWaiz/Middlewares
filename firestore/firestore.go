@@ -27,6 +27,7 @@ func CreateFirestoreInstance() IFirestore {
 
 	if err != nil {
 		log.Fatalf("(Firestore | ERROR) Err: %v ", err)
+		return nil
 	}
 
 	return &Firestore{client: client, ctx: ctx}
