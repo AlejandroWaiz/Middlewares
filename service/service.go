@@ -10,7 +10,7 @@ type Service struct {
 }
 
 type IService interface {
-	SaveDataIntoDatabase(dataToSave model.Novel) error
+	SaveDataIntoDatabase(dataToSave []model.Novel) error
 }
 
 func GetServiceInstance(f firestore.IFirestore) IService {

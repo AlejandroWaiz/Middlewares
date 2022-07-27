@@ -8,16 +8,22 @@ import (
 	"github.com/AlejandroWaiz/Middlewares/model"
 )
 
-func (f *Firestore) SaveDataIntoDatabase(dataToSave model.Novel) error {
+func (f *Firestore) SaveDataIntoDatabase(dataToSave []model.Novel) error {
 
-	_, _, err := f.client.Collection(os.Getenv("Firestore-Collections-name")).Add(f.ctx, dataToSave)
+	for _, novel := range dataToSave {
 
-	if err != nil {
-		log.Printf(("Firestore | ERROR) Err: %v"), err)
-		return err
+		_, _, err := f.client.Collection(os.Getenv("Firestore-Collections-name")).Add(f.ctx, novel)
+
+		if err != nil {
+			log.Printf(("Firestore | ERROR) Err: %v"), err)
+			return err
+		}
+
+		fmt.Println("¡Data saved into database!")
+
+		return nil
+
 	}
-
-	fmt.Println("¡Data saved into database!")
 
 	return nil
 

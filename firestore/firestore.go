@@ -16,14 +16,14 @@ type Firestore struct {
 }
 
 type IFirestore interface {
-	SaveDataIntoDatabase(dataToSave model.Novel) error
+	SaveDataIntoDatabase(dataToSave []model.Novel) error
 }
 
 func CreateFirestoreInstance() IFirestore {
 
 	ctx := context.Background()
 
-	client, err := firestore.NewClient(ctx, os.Getenv("Project-id"), option.WithCredentialsFile("../pubsub-key.json"))
+	client, err := firestore.NewClient(ctx, os.Getenv("Project-id"), option.WithCredentialsFile(os.Getenv("sa-filepath")))
 
 	if err != nil {
 		log.Fatalf("(Firestore | ERROR) Err: %v ", err)

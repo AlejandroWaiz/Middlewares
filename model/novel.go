@@ -1,6 +1,8 @@
 package model
 
 type Novel struct {
-	Name, Author, Genre string
-	Pages               int
+	Name   string `json:"Name"`
+	Author string `json:"Author"`
+	Genre  string `json:"Genre"`
+	Pages  int    `json:"Pages"`
 }
