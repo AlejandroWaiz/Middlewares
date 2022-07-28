@@ -12,8 +12,6 @@ func (f *Firestore) SaveDataIntoDatabase(dataToSave []model.Novel) error {
 
 	for _, novel := range dataToSave {
 
-		log.Println()
-
 		_, _, err := f.client.Collection(os.Getenv("Firestore-Collections-name")).Add(f.ctx, novel)
 
 		if err != nil {
